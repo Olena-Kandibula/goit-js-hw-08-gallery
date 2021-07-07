@@ -118,11 +118,7 @@ galleryContainerEl.addEventListener('click', onOpenBigImag);
        
         onOpenModalWindow();
         
-        onOpenModalImg(activImg);
-        // ===  buttons navigation ====
-        // console.log(activImg )
-
-
+        onOpenModalImg(activImg);    
     }
 
     function onOpenModalWindow() {
@@ -157,12 +153,30 @@ const modalOverlayEl = document.querySelector('.lightbox__overlay');
 modalOverlayEl.addEventListener('click', onCloseModal);
 modalOverlayEl.addEventListener('click', onDeleteModalImgAttr);
 
+document.addEventListener('keydown', function(evt){ 
+    if (window.event.keyCode === 27) {   
+      onCloseModal();
+      onDeleteModalImgAttr();
+    }
+  })
+
 // ==== right left ====
-
-// keyPress (Escape)
-
-document.onkeydown = function(e){ 
-  if (window.event.keyCode == 27) {
-    console.log("yess")
+document.addEventListener('keyup', function(event){
+  if (window.event.keyCode === 37) {   
+   console.log("right")
   }
-}
+  if (window.event.keyCode === 37) {   
+    console.log("left")
+   }
+  // console.log('Key: ', event.key);
+  // console.log('keyCode: ', event.keyCode);
+});
+
+
+// document.onkeydown = function(e){ 
+//   if (window.event.keyCode == 27) {
+//     console.log("444444")
+//   }
+// };
+
+
