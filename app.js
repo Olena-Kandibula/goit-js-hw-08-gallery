@@ -64,15 +64,13 @@ const galleryItems = [
   },
 ];
 
- const galleryContainerEl = document.querySelector(".js-gallery");//
+ const galleryContainerEl = document.querySelector(".js-gallery");
 
-  const galleryItemCards = creatGalleryItems ();
+  const galleryItemCards = creatGalleryItems (galleryItems);
 
-  galleryContainerEl.insertAdjacentHTML("afterbegin", galleryItemCards);
+  function creatGalleryItems (items) {
 
-  function creatGalleryItems () {
-
-    return galleryItems.map(({preview, original, description}) => {
+    return items.map(({preview, original, description}) => {
     
       return `
         <li class="gallery__item">
@@ -93,35 +91,18 @@ const galleryItems = [
     .join(" ")
   }
 
+  galleryContainerEl.insertAdjacentHTML("afterbegin", galleryItemCards);
 
 
-/////// вариант наполнения галлереи карточками
 
-// const galleryContainerEl = document.querySelector(".js-gallery");
+galleryContainerEl.addEventListener("click", onOpenBigImage);
 
-// const itemGalleryCards =  galleryItems.map(({preview,   original,   description}) => {
+function onOpenBigImage(evn) {
 
-//   const galleryCard = `
-//   <li class="gallery__item">
-// <a
-//   class="gallery__link"
-//   href='${preview}'
-// >
-//   <img
-//     class="gallery__image"
-//     src="${preview}"
-//     data-source="${original}"
-//     alt="${description}"
-//   />
-// </a>
-// </li>
-// `;
+  // if(!evn.target.classList.contains("gallery__link")) {
+    // return;
+   
+  // }
 
-// return galleryCard;
-// })
-
-// galleryContainerEl.insertAdjacentHTML("afterbegin", itemGalleryCards.join(" "));
-
-///////  END  вариант наполнения галлереи карточками
-
-// galleryContainerEl.addEventListener("click", )
+  console.log("it's img")
+}
