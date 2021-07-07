@@ -120,8 +120,19 @@ galleryContainerEl.addEventListener('click', onOpenBigImag);
         modalWindowEl.classList.add('is-open');
 
         modalWindowImgEl.src = activImg.dataset.source; 
-     
+        modalWindowImgEl.alt = activImg.alt;
     }
 
-// ==== open big img ====
-   
+// ==== close modal ====
+
+const modalCloseBtn = document.querySelector('.lightbox__button');
+console.log(modalCloseBtn)
+
+modalCloseBtn.addEventListener('click', onCloseModal)
+
+function onCloseModal(evt)  { 
+ 
+modalWindowEl.classList.remove('is-open');
+modalWindowImgEl.src = ' ';
+modalWindowImgEl.alt = ' ';
+}
