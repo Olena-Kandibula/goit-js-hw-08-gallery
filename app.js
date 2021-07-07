@@ -117,22 +117,42 @@ galleryContainerEl.addEventListener('click', onOpenBigImag);
 
         const activImg = evt.target;
 
-        modalWindowEl.classList.add('is-open');
+        onOpenModalWindow();
+        
+        onOpenModalImg(activImg);
 
-        modalWindowImgEl.src = activImg.dataset.source; 
-        modalWindowImgEl.alt = activImg.alt;
+        
+    }
+
+    function onOpenModalWindow() {
+      modalWindowEl.classList.add('is-open');
+    }
+
+    function onOpenModalImg (photos) {
+      modalWindowImgEl.src = photos.dataset.source; 
+      modalWindowImgEl.alt = photos.alt;
     }
 
 // ==== close modal ====
 
-const modalCloseBtn = document.querySelector('.lightbox__button');
-console.log(modalCloseBtn)
+const modalCloseBtnEl = document.querySelector('.lightbox__button');
 
-modalCloseBtn.addEventListener('click', onCloseModal)
+modalCloseBtnEl.addEventListener('click', onCloseModal);
+modalCloseBtnEl.addEventListener('click', onDeleteModalImgAttr);
 
-function onCloseModal(evt)  { 
- 
+
+function onCloseModal(evt)  {  
 modalWindowEl.classList.remove('is-open');
-modalWindowImgEl.src = ' ';
-modalWindowImgEl.alt = ' ';
 }
+
+function onDeleteModalImgAttr(evt) {
+modalWindowImgEl.src = '';
+modalWindowImgEl.alt = '';
+}
+
+
+const modalOverlayEl = document.querySelector('.lightbox__overlay');
+
+modalOverlayEl.addEventListener('click', onCloseModal);
+modalOverlayEl.addEventListener('click', onDeleteModalImgAttr);
+
