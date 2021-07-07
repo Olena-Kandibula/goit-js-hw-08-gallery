@@ -64,7 +64,9 @@ const galleryItems = [
   },
 ];
 
- const galleryContainerEl = document.querySelector(".js-gallery");
+// ==== creat galleri items ====
+
+  const galleryContainerEl = document.querySelector(".js-gallery");
 
   const galleryItemCards = creatGalleryItems (galleryItems);
 
@@ -93,16 +95,33 @@ const galleryItems = [
 
   galleryContainerEl.insertAdjacentHTML("afterbegin", galleryItemCards);
 
+  
+// ==== open modal and modal img ====
 
+const modalWindowEl = document.querySelector('div.js-lightbox');
+console.log( modalWindowEl)
 
-galleryContainerEl.addEventListener("click", onOpenBigImage);
+const modalWindowImgEl = modalWindowEl.querySelector('img.lightbox__image');
+    
 
-function onOpenBigImage(evn) {
+galleryContainerEl.addEventListener('click', onOpenBigImag);
 
-  // if(!evn.target.classList.contains("gallery__link")) {
-    // return;
+  function onOpenBigImag(evt) {
+
+        evt.preventDefault(); 
+
+        if(!evt.target.classList.contains('gallery__image')) {
+
+          return;
+        }
+
+        const activImg = evt.target;
+
+        modalWindowEl.classList.add('is-open');
+
+        modalWindowImgEl.src = activImg.dataset.source; 
+     
+    }
+
+// ==== open big img ====
    
-  // }
-
-  console.log("it's img")
-}
