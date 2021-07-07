@@ -99,7 +99,6 @@ const galleryItems = [
 // ==== open modal and modal img ====
 
 const modalWindowEl = document.querySelector('div.js-lightbox');
-console.log( modalWindowEl)
 
 const modalWindowImgEl = modalWindowEl.querySelector('img.lightbox__image');
     
@@ -116,12 +115,14 @@ galleryContainerEl.addEventListener('click', onOpenBigImag);
         }
 
         const activImg = evt.target;
-
+       
         onOpenModalWindow();
         
         onOpenModalImg(activImg);
+        // ===  buttons navigation ====
+        // console.log(activImg )
 
-        
+
     }
 
     function onOpenModalWindow() {
@@ -156,3 +157,12 @@ const modalOverlayEl = document.querySelector('.lightbox__overlay');
 modalOverlayEl.addEventListener('click', onCloseModal);
 modalOverlayEl.addEventListener('click', onDeleteModalImgAttr);
 
+// ==== right left ====
+
+// keyPress (Escape)
+
+document.onkeydown = function(e){ 
+  if (window.event.keyCode == 27) {
+    console.log("yess")
+  }
+}
